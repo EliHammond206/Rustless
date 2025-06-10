@@ -149,7 +149,7 @@
     .mentions {
       margin-top: 40px; /* Spacing from posts */
       text-align: center;
-      font-size: 2.5rem; /* Increased font size */
+      font-size: 1.5rem; /* Match Rustless logo size (text-2xl) */
       font-weight: bold;
       color: white;
       margin-bottom: 40px; /* Equal spacing to logos */
@@ -162,6 +162,8 @@
       margin-top: 40px; /* Equal spacing from title to logos */
       margin-bottom: 40px; /* Equal spacing from logos to footer */
       flex-wrap: wrap; /* Allow wrapping for 9 logos */
+      padding-left: 20px; /* Add space on left */
+      padding-right: 20px; /* Add space on right */
     }
     .mention-card {
       background-color: transparent; /* Removed background */
@@ -175,7 +177,7 @@
       align-items: center;
     }
     .mention-card img {
-      height: 40px; /* Reduced size */
+      height: 30px; /* Reduced size */
       margin-bottom: 0; /* Removed margin since text is gone */
     }
     @media (max-width: 767px) {
@@ -200,7 +202,7 @@
       .hero-section {
         flex-direction: column !important;
         align-items: center !important;
-        padding-top: 1rem !important;
+        padding-top: 12px !important; /* Increased from pt-8 to pt-12 */
       }
       .text-side {
         display: none !important;
@@ -229,13 +231,15 @@
       }
       .mentions {
         margin-top: 36px; /* Adjusted for mobile */
-        font-size: 2rem; /* Adjusted for mobile */
+        font-size: 1.5rem; /* Match Rustless logo size */
         margin-bottom: 36px; /* Equal spacing to logos */
       }
       .mention-grid {
         margin-top: 36px; /* Equal spacing from title to logos */
         margin-bottom: 36px; /* Equal spacing from logos to footer */
         gap: 30px; /* Reduced gap for mobile to fit 9 logos */
+        padding-left: 18px; /* Adjusted for mobile */
+        padding-right: 18px; /* Adjusted for mobile */
       }
       .mention-card {
         width: auto; /* Removed width constraint */
@@ -243,7 +247,7 @@
         padding: 0; /* Removed padding */
       }
       .mention-card img {
-        height: 32px; /* Reduced size for mobile */
+        height: 24px; /* Reduced size for mobile */
       }
     }
     @media (min-width: 641px) and (max-width: 767px) {
@@ -262,6 +266,9 @@
       }
     }
     @media (min-width: 768px) {
+      .hero-section {
+        padding-top: 16px; /* Increased from md:pt-12 to md:pt-16 */
+      }
       .text-top {
         display: none !important;
       }
@@ -270,9 +277,6 @@
       }
       .text-side h2 {
         font-size: 90px;
-      }
-      .hero-section {
-        gap: 1.5rem;
       }
     }
   </style>
@@ -292,7 +296,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-4 md:px-8 pt-8 md:pt-12 hero-section max-w-6xl mx-auto">
+  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-4 md:px-8 pt-12 md:pt-16 hero-section max-w-6xl mx-auto">
     <!-- Text Section (Centered Above Photo on Mobile) -->
     <div class="hidden text-top">
       <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
@@ -347,34 +351,34 @@
 
   <!-- Mentions Section -->
   <section class="mentions-section text-center">
-    <h2 class="mentions">Watch Us Soon On Mentions</h2>
+    <h2 class="mentions">Soon In Mentions</h2>
     <div class="mention-grid">
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/1.png" alt="Logo 1" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/1.png" alt="Logo 1" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/11.png" alt="Logo 2" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/11.png" alt="Logo 2" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/12.png" alt="Logo 3" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/12.png" alt="Logo 3" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/2.png" alt="Logo 4" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/2.png" alt="Logo 4" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/4.png" alt="Logo 5" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/4.png" alt="Logo 5" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/6.png" alt="Logo 6" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/6.png" alt="Logo 6" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/7.png" alt="Logo 7" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/7.png" alt="Logo 7" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/8.png" alt="Logo 8" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/8.png" alt="Logo 8" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/9.png" alt="Logo 9" style="height: 40px;">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/9.png" alt="Logo 9" style="height: 30px;">
       </div>
     </div>
   </section>
