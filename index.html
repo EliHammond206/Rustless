@@ -20,6 +20,7 @@
       box-shadow: 0 0 20px 35px rgba(0, 0, 0, 0.5);
       z-index: 3;
       border-radius: 1.5rem; /* Equivalent to rounded-3xl */
+      max-width: 384px; /* Limit width to max-w-xs */
     }
     .post {
       position: relative;
@@ -293,14 +294,25 @@
     @media (min-width: 768px) {
       .hero-section {
         padding-top: 10px; /* Adjusted to ~40px */
+        justify-content: space-between; /* Distribute space evenly */
       }
       .text-side {
         display: block !important;
         margin-bottom: 40px; /* Increased from 20px to 40px */
-        z-index: 4; /* Ensure text stays above slideshow */
+        z-index: 2; /* Text behind photo */
+        flex: 1; /* Allow text to take available space */
+        margin-right: 40px; /* Gap on right of left text */
+      }
+      .text-side:last-child {
+        margin-left: 40px; /* Gap on left of right text */
       }
       .text-side h2 {
         font-size: 90px;
+      }
+      .hero-container {
+        max-width: 1280px; /* Wider container */
+        padding-left: 40px; /* Gap on left */
+        padding-right: 40px; /* Gap on right */
       }
     }
   </style>
@@ -320,40 +332,42 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
-    <!-- Text Section (Centered Above Photo on Mobile) -->
-    <div class="hidden text-top">
-      <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
-        <span class="block">Live It</span>
-        <span class="block">Your Way</span>
-      </h2>
-    </div>
-    <!-- Left Text Section (Desktop Only) -->
-    <div class="md:w-auto text-center md:text-right md:pr-4 text-side">
-      <h2 class="text-5xl md:text-9xl font-bold leading-none">
-        <span class="block">Live</span>
-        <span class="block">It</span>
-      </h2>
-    </div>
-    <!-- Post Section (Centered) -->
-    <div class="md:w-1/3 flex flex-col items-center relative">
-      <div class="relative w-64 h-96 md:w-80 md:h-[500px] post-container rounded-3xl">
-        <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
-          <div class="gradient-overlay"></div>
-          <div class="gradient-overlay-bottom"></div>
-          <div class="post-content">
+  <div class="hero-container">
+    <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
+      <!-- Text Section (Centered Above Photo on Mobile) -->
+      <div class="hidden text-top">
+        <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
+          <span class="block">Live It</span>
+          <span class="block">Your Way</span>
+        </h2>
+      </div>
+      <!-- Left Text Section (Desktop Only) -->
+      <div class="md:w-auto text-center md:text-right md:pr-4 text-side">
+        <h2 class="text-5xl md:text-9xl font-bold leading-none">
+          <span class="block">Live</span>
+          <span class="block">It</span>
+        </h2>
+      </div>
+      <!-- Post Section (Centered) -->
+      <div class="md:w-1/3 flex flex-col items-center relative">
+        <div class="relative w-64 h-96 md:w-80 md:h-[500px] post-container rounded-3xl max-w-xs">
+          <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
+            <div class="gradient-overlay"></div>
+            <div class="gradient-overlay-bottom"></div>
+            <div class="post-content">
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Right Text Section (Desktop Only) -->
-    <div class="md:w-auto text-center md:text-left md:pl-4 text-side">
-      <h2 class="text-5xl md:text-9xl font-bold leading-none">
-        <span class="block">Your</span>
-        <span class="block">Way</span>
-      </h2>
-    </div>
-  </main>
+      <!-- Right Text Section (Desktop Only) -->
+      <div class="md:w-auto text-center md:text-left md:pl-4 text-side">
+        <h2 class="text-5xl md:text-9xl font-bold leading-none">
+          <span class="block">Your</span>
+          <span class="block">Way</span>
+        </h2>
+      </div>
+    </main>
+  </div>
 
   <!-- Subtle Gradient Overlay -->
   <div class="blur-gradient"></div>
