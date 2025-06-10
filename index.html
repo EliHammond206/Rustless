@@ -157,7 +157,7 @@
     .mention-grid {
       display: flex;
       justify-content: center;
-      gap: 60px;
+      gap: 30px; /* Reduced from 60px */
       overflow: hidden;
       margin-top: 40px; /* Equal spacing from title to logos */
       margin-bottom: 40px; /* Equal spacing from logos to footer */
@@ -202,7 +202,7 @@
       .hero-section {
         flex-direction: column !important;
         align-items: center !important;
-        padding-top: 12px !important; /* Increased from pt-8 to pt-12 */
+        padding-top: 12px !important; /* Matches mentions margin-top */
       }
       .text-side {
         display: none !important;
@@ -237,7 +237,7 @@
       .mention-grid {
         margin-top: 36px; /* Equal spacing from title to logos */
         margin-bottom: 36px; /* Equal spacing from logos to footer */
-        gap: 30px; /* Reduced gap for mobile to fit 9 logos */
+        gap: 15px; /* Reduced from 30px */
         padding-left: 18px; /* Adjusted for mobile */
         padding-right: 18px; /* Adjusted for mobile */
       }
@@ -297,13 +297,15 @@
     }
     @media (min-width: 768px) {
       .hero-section {
-        padding-top: 16px; /* Increased from md:pt-12 to md:pt-16 */
+        padding-top: 12px; /* Matches mentions margin-top */
       }
       .text-top {
         display: none !important;
       }
       .text-side {
         display: block !important;
+        margin-bottom: 20px; /* Add gap below text */
+        z-index: 4; /* Ensure text stays above slideshow */
       }
       .text-side h2 {
         font-size: 90px;
@@ -326,7 +328,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-4 md:px-8 pt-12 md:pt-16 hero-section max-w-6xl mx-auto">
+  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-4 md:px-8 pt-12 md:pt-12 hero-section max-w-6xl mx-auto">
     <!-- Text Section (Centered Above Photo on Mobile) -->
     <div class="hidden text-top">
       <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
