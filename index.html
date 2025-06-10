@@ -13,29 +13,24 @@
       overflow: auto;
       background-color: #000;
     }
-    .slideshow-container {
+    .post-container {
       position: relative;
       width: 525px;
       height: 390px;
       box-shadow: 0 0 20px 35px rgba(0, 0, 0, 0.5);
       z-index: 3;
+      border-radius: 1.5rem; /* Equivalent to rounded-3xl */
     }
-    .slide {
-      position: absolute;
-      top: 0;
-      left: 0;
+    .post {
+      position: relative;
       width: 100%;
       height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
       background-size: cover;
       background-position: center;
       display: flex;
       align-items: flex-start;
       padding: 0.75rem;
-    }
-    .slide.active {
-      opacity: 1;
+      border-radius: 1.5rem; /* Ensure inner content matches */
     }
     .post-content {
       display: flex;
@@ -181,7 +176,7 @@
       margin-bottom: 0; /* Removed margin since text is gone */
     }
     @media (max-width: 767px) {
-      .slideshow-container {
+      .post-container {
         width: 455px;
         height: 338px;
         box-shadow: 0 0 15px 25px rgba(0, 0, 0, 0.5);
@@ -202,7 +197,7 @@
       .hero-section {
         flex-direction: column !important;
         align-items: center !important;
-        padding-top: 12px !important; /* Matches mentions margin-top */
+        padding-top: 9px !important; /* Adjusted to ~36px */
       }
       .text-side {
         display: none !important;
@@ -284,7 +279,7 @@
       .text-mobile {
         font-size: 3rem;
       }
-      .slideshow-container {
+      .post-container {
         width: 455px;
         height: 338px;
       }
@@ -297,14 +292,11 @@
     }
     @media (min-width: 768px) {
       .hero-section {
-        padding-top: 12px; /* Matches mentions margin-top */
-      }
-      .text-top {
-        display: none !important;
+        padding-top: 10px; /* Adjusted to ~40px */
       }
       .text-side {
         display: block !important;
-        margin-bottom: 20px; /* Add gap below text */
+        margin-bottom: 40px; /* Increased from 20px to 40px */
         z-index: 4; /* Ensure text stays above slideshow */
       }
       .text-side h2 {
@@ -328,7 +320,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-4 md:px-8 pt-12 md:pt-12 hero-section max-w-6xl mx-auto">
+  <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
     <!-- Text Section (Centered Above Photo on Mobile) -->
     <div class="hidden text-top">
       <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
@@ -343,25 +335,10 @@
         <span class="block">It</span>
       </h2>
     </div>
-    <!-- Slideshow Section (Centered) -->
+    <!-- Post Section (Centered) -->
     <div class="md:w-1/3 flex flex-col items-center relative">
-      <div class="relative w-64 h-96 md:w-80 md:h-[500px] bg-gray-300 rounded-3xl overflow-hidden slideshow-container">
-        <!-- Slide 1 -->
-        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
-          <div class="gradient-overlay"></div>
-          <div class="gradient-overlay-bottom"></div>
-          <div class="post-content">
-          </div>
-        </div>
-        <!-- Slide 2 -->
-        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/c3c4776236b11441bc5734357c1b7673.jpg');">
-          <div class="gradient-overlay"></div>
-          <div class="gradient-overlay-bottom"></div>
-          <div class="post-content">
-          </div>
-        </div>
-        <!-- Slide 3 -->
-        <div class="slide" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/d7bd849c5ac019620961f5cc9be9319a.jpg');">
+      <div class="relative w-64 h-96 md:w-80 md:h-[500px] post-container rounded-3xl">
+        <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
           <div class="gradient-overlay"></div>
           <div class="gradient-overlay-bottom"></div>
           <div class="post-content">
@@ -424,27 +401,6 @@
     <a href="#" class="hover:underline">Community Guidelines</a>
   </footer>
 
-  <!-- JavaScript for Slideshow -->
-  <script>
-    const slides = document.querySelectorAll('.slide');
-    let currentSlide = 0;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    // Show the first slide initially
-    showSlide(currentSlide);
-
-    // Change slide every 3 seconds
-    setInterval(nextSlide, 3000);
-  </script>
+  <!-- JavaScript Removed (No Slideshow) -->
 </body>
 </html>
