@@ -12,84 +12,111 @@
       height: 100vh;
       overflow: auto;
       background-color: #000;
-      font-family: Arial, sans-serif;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-    }
-    .header h1 {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-    }
-    .header .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    .header a {
-      color: white;
-      font-size: 0.875rem;
-      text-decoration: none;
-    }
-    .header .new-tag {
-      background-color: red;
-      color: white;
-      font-size: 0.625rem;
-      padding: 0.125rem 0.25rem;
-      border-radius: 0.25rem;
-      margin-left: 0.25rem;
-    }
-    .header button {
-      background-color: white;
-      color: black;
-      padding: 0.5rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      border: none;
-    }
-    .hero-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      flex: 1;
-      padding: 0 1rem;
-    }
-    .text-container {
-      text-align: center;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      z-index: 2;
-    }
-    .text-container h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: white;
-    }
-    .text-container h2 span {
-      display: block;
     }
     .post-container {
       position: relative;
-      width: 100%;
-      max-width: 384px;
+      width: 525px;
       height: 390px;
       box-shadow: 0 0 20px 35px rgba(0, 0, 0, 0.5);
-      border-radius: 1.5rem;
       z-index: 3;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
+      border-radius: 1.5rem; /* Equivalent to rounded-3xl */
+      max-width: 384px; /* Limit width to max-w-xs */
     }
     .post {
+      position: relative;
       width: 100%;
       height: 100%;
       background-size: cover;
       background-position: center;
-      border-radius: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      padding: 0.75rem;
+      border-radius: 1.5rem; /* Ensure inner content matches */
+    }
+    .post-content {
+      display: flex;
+      width: 100%;
+      background: none;
+      position: relative;
+      z-index: 2;
+      justify-content: flex-end; /* Align photo to the right (though removed) */
+    }
+    .post-inset-wrapper {
+      position: relative;
+      width: 121px;
+      height: 161px;
+      border: 0.5px solid black;
+      border-radius: 0.75rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-shrink: 0; /* Prevent wrapping */
+    }
+    .post-inset {
+      position: relative;
+      width: 120px;
+      height: 160px;
+      border-radius: 0.65rem;
+      overflow: hidden;
+      background-size: cover;
+    }
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .gradient-overlay-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .overlay-button {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      border: none;
+      background: black;
+      background-clip: padding-box;
+      padding: 2px;
+    }
+    .overlay-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      border-radius: 9999px;
+      background: linear-gradient(45deg, #00ff00, #00b7ff);
+      padding: 2px;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    .button-text {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      color: #D1D1D1;
+      font-size: 0.75rem;
+      text-align: center;
+      white-space: nowrap;
     }
     .blur-gradient {
       position: absolute;
@@ -99,70 +126,156 @@
       height: 300px;
       background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.01) 100%);
       pointer-events: none;
-      z-index: 1;
+      z-index: 5;
+    }
+    .new-tag {
+      background-color: red;
+      color: white;
+      font-size: 0.625rem;
+      padding: 0.125rem 0.25rem;
+      border-radius: 0.25rem;
+      margin-left: 0.25rem;
+    }
+    .ad-text-large {
+      display: inline;
+    }
+    .ad-text-small {
+      display: none;
     }
     .mentions {
+      margin-top: 36px; /* Consistent gap on phones */
       text-align: center;
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      font-size: 1.5rem; /* Match Rustless logo size (text-2xl) */
       font-weight: bold;
       color: white;
+      margin-bottom: 36px; /* Consistent gap on phones */
     }
     .mention-grid {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 30px; /* Reduced from 60px */
       overflow: hidden;
-      flex-wrap: wrap;
-      padding: 0 1rem;
+      margin-top: 36px; /* Consistent gap on phones */
+      margin-bottom: 36px; /* Consistent gap on phones */
+      flex-wrap: wrap; /* Allow wrapping for 9 logos */
+      padding-left: 18px; /* Adjusted for mobile */
+      padding-right: 18px; /* Adjusted for mobile */
+    }
+    .text-container {
+      text-align: center;
+      z-index: 2; /* Behind photo */
+      margin-bottom: 36px; /* Consistent gap on phones */
+    }
+    .text-container h2 {
+      font-size: 90px;
+      font-weight: bold;
+      color: white;
     }
     .mention-card {
+      background-color: transparent; /* Removed background */
+      color: white;
+      padding: 0; /* Removed padding */
+      box-shadow: none; /* Removed shadow */
+      border-radius: 0; /* Removed border radius */
+      width: auto; /* Removed width constraint */
+      height: auto; /* Removed height constraint */
       display: flex;
       align-items: center;
     }
     .mention-card img {
-      height: 30px;
+      height: 30px; /* Reduced size */
+      margin-bottom: 0; /* Removed margin since text is gone */
     }
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 1rem;
-      font-size: 0.875rem;
-      color: white;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-
     @media (max-width: 767px) {
-      .header {
+      .post-container {
+        width: 455px;
+        height: 338px;
+        box-shadow: 0 0 15px 25px rgba(0, 0, 0, 0.5);
+      }
+      .overlay-button {
+        bottom: 40px;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        font-size: 0.875rem;
+      }
+      .button-text {
+        bottom: 15px;
+        font-size: 0.625rem;
+      }
+      .text-mobile {
+        font-size: 2.5rem;
+      }
+      .hero-section {
+        flex-direction: column !important;
+        align-items: center !important;
+        padding-top: 36px !important; /* Consistent gap on phones */
+      }
+      .text-container {
+        display: block; /* Ensure text stacks on mobile */
+      }
+      .text-container h2 {
+        font-size: 2.5rem; /* Adjusted for mobile */
+      }
+      .blur-gradient {
+        height: 250px;
+      }
+      .post-content {
+        flex-direction: column; /* Stack on mobile */
+        align-items: flex-end; /* Align photo to the right on mobile (though removed) */
+      }
+      .post-inset-wrapper {
+        width: 105px;
+        height: 139px;
+        margin-left: 0; /* Remove margin on mobile */
+      }
+      .post-inset {
+        width: 104px;
+        height: 138px;
+        border-radius: 0.55rem;
+      }
+      .mentions {
+        margin-top: 36px; /* Consistent gap on phones */
+        font-size: 1.5rem; /* Match Rustless logo size */
+        margin-bottom: 36px; /* Consistent gap on phones */
+      }
+      .mention-grid {
+        margin-top: 36px; /* Consistent gap on phones */
+        margin-bottom: 36px; /* Consistent gap on phones */
+        gap: 15px; /* Reduced from 30px */
+        padding-left: 18px; /* Adjusted for mobile */
+        padding-right: 18px; /* Adjusted for mobile */
+      }
+      .mention-card {
+        width: auto; /* Removed width constraint */
+        height: auto; /* Removed height constraint */
+        padding: 0; /* Removed padding */
+      }
+      .mention-card img {
+        height: 24px; /* Reduced size for mobile */
+      }
+      header {
         padding: 0.5rem;
         flex-wrap: nowrap;
       }
-      .header h1 {
+      header h1 {
         font-size: 1.25rem;
       }
-      .header .nav-links {
+      header .flex {
         gap: 0.5rem;
         max-width: 200px;
       }
-      .header a {
+      header a {
         font-size: 0.75rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .header button {
+      header button {
         font-size: 0.75rem;
-        padding: 0.5rem;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
       }
       .ad-text-large {
         display: none;
@@ -170,85 +283,101 @@
       .ad-text-small {
         display: inline;
       }
+      footer {
+        padding: 36px 0.5rem; /* Consistent gap on phones */
+      }
+    }
+    @media (min-width: 768px) {
       .hero-section {
-        padding-top: 0.9rem;
+        padding-top: 40px; /* Consistent gap on laptops */
+        flex-direction: column; /* Stack text above photo */
+        align-items: center; /* Center the content */
       }
       .text-container {
-        margin-top: 0.9rem;
-        margin-bottom: 0.9rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        z-index: 2; /* Behind photo */
+        margin-bottom: 40px; /* Consistent gap on laptops */
       }
       .text-container h2 {
-        font-size: 2.5rem;
+        font-size: 90px;
+        font-weight: bold;
+        color: white;
+      }
+      .hero-container {
+        max-width: 1280px; /* Wider container */
+        padding-left: 40px; /* Gap on left */
+        padding-right: 40px; /* Gap on right */
+      }
+      .mentions {
+        margin-top: 40px; /* Consistent gap on laptops */
+        font-size: 1.5rem; /* Match Rustless logo size */
+        margin-bottom: 40px; /* Consistent gap on laptops */
+      }
+      .mention-grid {
+        margin-top: 40px; /* Consistent gap on laptops */
+        margin-bottom: 40px; /* Consistent gap on laptops */
+        gap: 30px; /* Reduced from 60px */
+        padding-left: 20px; /* Add space on left */
+        padding-right: 20px; /* Add space on right */
+      }
+      footer {
+        padding: 40px 0.5rem; /* Consistent gap on laptops */
+      }
+    }
+    @media (min-width: 641px) and (max-width: 767px) {
+      .text-mobile {
+        font-size: 3rem;
       }
       .post-container {
         width: 455px;
         height: 338px;
-        margin-top: 0.9rem;
-        margin-bottom: 0.9rem;
       }
-      .mentions {
-        margin-top: 0.9rem;
-        margin-bottom: 0.9rem;
-        font-size: 1.5rem;
+      .overlay-button {
+        bottom: 45px;
       }
-      .mention-grid {
-        gap: 15px;
-        padding: 0 1.125rem;
-      }
-      .mention-card img {
-        height: 24px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .header {
-        padding: 1rem;
-      }
-      .hero-section {
-        padding-top: 1rem;
-      }
-      .text-container {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      .post-container {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-      .mentions {
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+      .button-text {
+        bottom: 22px;
       }
     }
   </style>
 </head>
 <body class="bg-black text-white flex flex-col h-screen relative">
   <!-- Header -->
-  <header class="header">
-    <h1>Rustless</h1>
-    <div class="nav-links">
-      <a href="#">
+  <header class="flex justify-between items-center p-4">
+    <h1 class="text-2xl font-bold">Rustless</h1>
+    <div class="flex items-center space-x-3">
+      <a href="#" class="text-white text-sm align-middle">
         <span class="ad-text-large">Advertise with Rustless</span>
         <span class="ad-text-small">Ads</span>
         <span class="new-tag">New</span>
       </a>
-      <button>Get The App</button>
+      <button class="bg-white text-black px-4 py-2 rounded-full text-sm align-middle">Get The App</button>
     </div>
   </header>
 
   <!-- Main Content -->
   <div class="hero-container">
-    <main class="hero-section">
-      <!-- Text Section -->
+    <main class="flex-1 flex flex-col md:flex-col items-center justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
+      <!-- Text Section (Centered Above Photo) -->
       <div class="text-container">
         <h2>
           <span>Live It</span>
           <span>Your Way</span>
         </h2>
       </div>
-      <!-- Post Section -->
-      <div class="post-container">
-        <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');"></div>
+      <!-- Post Section (Centered) -->
+      <div class="flex flex-col items-center relative">
+        <div class="relative w-64 h-96 md:w-80 md:h-[500px] post-container rounded-3xl max-w-xs">
+          <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
+            <div class="gradient-overlay"></div>
+            <div class="gradient-overlay-bottom"></div>
+            <div class="post-content">
+            </div>
+          </div>
+        </div>
       </div>
     </main>
   </div>
@@ -257,46 +386,48 @@
   <div class="blur-gradient"></div>
 
   <!-- Mentions Section -->
-  <section class="mentions">
-    <h2>Soon In Mentions</h2>
+  <section class="mentions-section text-center">
+    <h2 class="mentions">Soon In Mentions</h2>
     <div class="mention-grid">
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/1.png" alt="Logo 1">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/1.png" alt="Logo 1" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/11.png" alt="Logo 2">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/11.png" alt="Logo 2" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/12.png" alt="Logo 3">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/12.png" alt="Logo 3" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/2.png" alt="Logo 4">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/2.png" alt="Logo 4" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/4.png" alt="Logo 5">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/4.png" alt="Logo 5" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/6.png" alt="Logo 6">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/6.png" alt="Logo 6" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/7.png" alt="Logo 7">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/7.png" alt="Logo 7" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/8.png" alt="Logo 8">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/8.png" alt="Logo 8" style="height: 30px;">
       </div>
       <div class="mention-card">
-        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/9.png" alt="Logo 9">
+        <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/9.png" alt="Logo 9" style="height: 30px;">
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="flex flex-wrap justify-center items-center p-4 text-sm space-x-4 relative z-10">
     <span>© 2026 Rustless</span>
-    <a href="#">Terms of Service</a>
-    <a href="#">Get Help</a>
-    <a href="#">Join Rustless Family</a>
-    <a href="#">Community Guidelines</a>
+    <a href="#" class="hover:underline">Terms of Service</a>
+    <a href="#" class="hover:underline">Get Help</a>
+    <a href="#" class="hover:underline">Join Rustless Family</a>
+    <a href="#" class="hover:underline">Community Guidelines</a>
   </footer>
+
+  <!-- JavaScript Removed (No Slideshow) -->
 </body>
 </html>
