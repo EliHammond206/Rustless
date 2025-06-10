@@ -161,6 +161,15 @@
       padding-left: 20px; /* Add space on left */
       padding-right: 20px; /* Add space on right */
     }
+    .text-container {
+      text-align: center;
+      z-index: 2; /* Behind photo */
+    }
+    .text-container h2 {
+      font-size: 90px;
+      font-weight: bold;
+      color: white;
+    }
     .mention-card {
       background-color: transparent; /* Removed background */
       color: white;
@@ -200,13 +209,11 @@
         align-items: center !important;
         padding-top: 9px !important; /* Adjusted to ~36px */
       }
-      .text-side {
-        display: none !important;
+      .text-container {
+        display: block; /* Ensure text stacks on mobile */
       }
-      .text-top {
-        display: block !important;
-        text-align: center;
-        margin-bottom: 1rem;
+      .text-container h2 {
+        font-size: 2.5rem; /* Adjusted for mobile */
       }
       .blur-gradient {
         height: 250px;
@@ -294,20 +301,26 @@
     @media (min-width: 768px) {
       .hero-section {
         padding-top: 10px; /* Adjusted to ~40px */
-        justify-content: center; /* Center the photo */
+        flex-direction: column; /* Stack text above photo */
+        align-items: center; /* Center the content */
       }
-      .text-side {
-        display: block !important;
-        margin-bottom: 40px; /* Increased from 20px to 40px */
-        z-index: 2; /* Text behind photo */
-        flex: 1; /* Allow text to take available space */
-        margin-right: 20px; /* Reduced gap to 20px */
+      .text-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        z-index: 2; /* Behind photo */
       }
-      .text-side:last-child {
-        margin-left: 20px; /* Reduced gap to 20px */
-      }
-      .text-side h2 {
+      .text-container h2 {
         font-size: 90px;
+        font-weight: bold;
+        color: white;
+      }
+      .text-container h2 span:first-child {
+        content: "Live It";
+      }
+      .text-container h2 span:last-child {
+        content: "Your Way";
       }
       .hero-container {
         max-width: 1280px; /* Wider container */
@@ -333,23 +346,16 @@
 
   <!-- Main Content -->
   <div class="hero-container">
-    <main class="flex-1 flex flex-col md:flex-row items-start justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
-      <!-- Text Section (Centered Above Photo on Mobile) -->
-      <div class="hidden text-top">
-        <h2 class="text-5xl md:text-9xl font-bold leading-none text-mobile">
-          <span class="block">Live It</span>
-          <span class="block">Your Way</span>
-        </h2>
-      </div>
-      <!-- Left Text Section (Desktop Only) -->
-      <div class="md:w-auto text-center md:text-right md:pr-4 text-side">
-        <h2 class="text-5xl md:text-9xl font-bold leading-none">
-          <span class="block">Live</span>
-          <span class="block">It</span>
+    <main class="flex-1 flex flex-col md:flex-col items-center justify-center px-9 md:px-10 pt-9 md:pt-10 hero-section max-w-6xl mx-auto">
+      <!-- Text Section (Centered Above Photo) -->
+      <div class="text-container">
+        <h2>
+          <span>Live It</span>
+          <span>Your Way</span>
         </h2>
       </div>
       <!-- Post Section (Centered) -->
-      <div class="md:w-1/3 flex flex-col items-center relative">
+      <div class="flex flex-col items-center relative">
         <div class="relative w-64 h-96 md:w-80 md:h-[500px] post-container rounded-3xl max-w-xs">
           <div class="post" style="background-image: url('https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/bce4a4b6cd43e7a78a98d8795508fc27.jpg');">
             <div class="gradient-overlay"></div>
@@ -358,13 +364,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- Right Text Section (Desktop Only) -->
-      <div class="md:w-auto text-center md:text-left md:pl-4 text-side">
-        <h2 class="text-5xl md:text-9xl font-bold leading-none">
-          <span class="block">Your</span>
-          <span class="block">Way</span>
-        </h2>
       </div>
     </main>
   </div>
