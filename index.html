@@ -50,7 +50,7 @@
     }
 
     .title-section {
-      padding: 40px 40px 20px;
+      padding: 40px 80px 20px;
       text-align: left;
     }
 
@@ -63,18 +63,21 @@
 
     .title-section h1 span {
       display: block;
-      font-size: 72px;
+      font-size: 96px;
     }
 
     .page {
       display: flex;
-      padding: 40px 40px 80px;
+      padding: 40px 80px 80px;
       gap: 20px;
     }
 
     .sidebar {
+      flex: 1;
       max-width: 250px;
       padding-top: 0;
+      margin: 0; /* Reset any default margin */
+      padding: 0; /* Reset any default padding */
     }
 
     .sidebar h2 {
@@ -115,7 +118,10 @@
     }
 
     .content {
+      flex: 3;
       max-width: 600px;
+      margin: 0; /* Reset any default margin */
+      padding: 0; /* Reset any default padding */
     }
 
     .content h2 {
@@ -142,6 +148,11 @@
       text-decoration: none;
     }
 
+    .content .section {
+      margin: 0; /* Reset all margins */
+      padding: 0; /* Reset all padding */
+    }
+
     .contact-form-box {
       background-color: #fff0f5;
       border: 1px solid #f5f5f5;
@@ -151,7 +162,7 @@
     }
 
     .contact-form-box h3 {
-      font-size: 38px;
+      font-size: 22px;
       font-weight: 800;
       margin: 0 0 10px;
       color: #000;
@@ -179,8 +190,15 @@
       background-color: #d4004d;
     }
 
+    .contact-form {
+      flex: 1;
+      max-width: 250px;
+      margin: 0; /* Reset any default margin */
+      padding: 0; /* Reset any default padding */
+    }
+
     .contact-form h2 {
-      font-size: 32px;
+      font-size: 38px;
       font-weight: 800;
       margin: 0 0 20px 0;
     }
@@ -254,7 +272,8 @@
       .page {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
-        gap: 30px; /* Uniform gap for equal spacing */
+        gap: 30px;
+        align-items: start;
       }
 
       .sidebar {
@@ -263,6 +282,11 @@
 
       .content {
         grid-column: 2;
+      }
+
+      .content .section {
+        margin: 0;
+        padding: 0;
       }
 
       .contact-form {
