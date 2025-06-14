@@ -23,30 +23,34 @@
       padding: 24px 40px;
     }
 
-    header nav a {
-      margin-left: 24px;
-      text-decoration: none;
-      color: #000;
-      font-weight: 800;
-      font-size: 20px;
-      position: relative;
+    header nav {
+      display: none; /* Hide links on small screens */
     }
 
-    header nav a.active::after {
-      content: '•';
-      color: #000;
-      position: absolute;
-      bottom: -16px;
-      left: 50%;
-      transform: translateX(-50%);
+    header .logo {
+      flex: 1;
     }
 
-    .logo img {
-      height: 32px;
+    header .app-icons {
+      flex: 1;
+      text-align: right;
     }
 
-    .app-icons img {
+    header .logo img,
+    header .app-icons img {
       height: 40px;
+    }
+
+    @media (min-width: 768px) {
+      header nav {
+        display: flex;
+      }
+      header .logo {
+        flex: initial;
+      }
+      header .app-icons {
+        flex: initial;
+      }
     }
 
     .title-section {
@@ -76,8 +80,8 @@
       flex: 1;
       max-width: 250px;
       padding-top: 0;
-      margin: 0; /* Reset any default margin */
-      padding: 0; /* Reset any default padding */
+      margin: 0;
+      padding: 0;
     }
 
     .sidebar h2 {
@@ -120,8 +124,8 @@
     .content {
       flex: 3;
       max-width: 600px;
-      margin: 0; /* Reset any default margin */
-      padding: 0; /* Reset any default padding */
+      margin: 0;
+      padding: 0;
     }
 
     .content h2 {
@@ -149,8 +153,8 @@
     }
 
     .content .section {
-      margin: 0; /* Reset all margins */
-      padding: 0; /* Reset all padding */
+      margin: 0;
+      padding: 0;
     }
 
     .contact-form-box {
@@ -174,27 +178,16 @@
       color: #333;
     }
 
-    .contact-form-box button {
-      background-color: #f50057;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: 800;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .contact-form-box button:hover {
-      background-color: #d4004d;
+    .contact-form-box p a {
+      color: #f50057;
+      text-decoration: none;
     }
 
     .contact-form {
       flex: 1;
       max-width: 250px;
-      margin: 0; /* Reset any default margin */
-      padding: 0; /* Reset any default padding */
+      margin: 0;
+      padding: 0;
     }
 
     .contact-form h2 {
@@ -268,7 +261,7 @@
       font-weight: 800;
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
       .page {
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
@@ -297,6 +290,52 @@
         margin-bottom: 20px;
       }
     }
+
+    @media (max-width: 767px) {
+      .page {
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .sidebar h2 {
+        font-size: 32px;
+      }
+
+      .sidebar ul li {
+        font-size: 16px;
+      }
+
+      .content h2 {
+        font-size: 48px;
+      }
+
+      .content h3 {
+        font-size: 32px;
+      }
+
+      .content p {
+        font-size: 22px;
+      }
+
+      .sidebar,
+      .content,
+      .contact-form {
+        width: 100%; /* Ensure full width on small screens */
+        max-width: none; /* Remove max-width constraints */
+      }
+
+      .sidebar {
+        order: 1;
+      }
+
+      .content {
+        order: 2;
+      }
+
+      .contact-form {
+        order: 3;
+      }
+    }
   </style>
 </head>
 <body>
@@ -304,12 +343,7 @@
     <div class="logo">
       <img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/Screenshot%202025-06-13%20at%2020.36.58.png" alt="NGL Logo">
     </div>
-    <nav>
-      <a href="#" class="">About</a>
-      <a href="#" class="active">Safety</a>
-      <a href="#" class="">Blog</a>
-      <a href="#" class="">Contact us</a>
-    </nav>
+    <nav></nav>
     <div class="app-icons">
       <a href="#"><img src="https://raw.githubusercontent.com/EliHammond206/rustless/main/pictures/Screenshot%202025-06-13%20at%2020.41.42.png" alt="App Stores"></a>
     </div>
@@ -395,7 +429,18 @@
       <div class="contact-form-box">
         <h3>Contact Support</h3>
         <p>Get help from our team for any issues or questions.</p>
-        <button>Contact Us</button>
+      </div>
+      <div class="contact-form-box">
+        <h3>Legal Requests</h3>
+        <p>For legal inquiries, please email <a href="mailto:legalrequests@kodex.com">legalrequests@kodex.com</a>.</p>
+      </div>
+      <div class="contact-form-box">
+        <h3>Account Issues</h3>
+        <p>Contact support inside the app for account-related queries.</p>
+      </div>
+      <div class="contact-form-box">
+        <h3>Physical Papers</h3>
+        <p>Send letters to our agent at: 123 Safety Lane, Secure City, SC 12345.</p>
       </div>
     </div>
   </div>
