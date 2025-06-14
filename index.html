@@ -295,6 +295,11 @@
       .page {
         flex-direction: column;
         gap: 40px;
+        padding: 40px 40px 80px; /* Reduced left and right padding to 40px on small screens */
+      }
+
+      .title-section {
+        padding: 40px 40px 20px; /* Reduced left and right padding to 40px on small screens */
       }
 
       .sidebar h2 {
@@ -320,8 +325,8 @@
       .sidebar,
       .content,
       .contact-form {
-        width: 100%; /* Ensure full width on small screens */
-        max-width: none; /* Remove max-width constraints */
+        width: 100%;
+        max-width: none;
       }
 
       .sidebar {
